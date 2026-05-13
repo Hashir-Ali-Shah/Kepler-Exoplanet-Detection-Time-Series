@@ -3,11 +3,12 @@
 *.weights.h5
 *.h5
 checkpoints/
-results/
+models/
+results/*
+!results/images/
 comparison_results/
 comparison/
-comparison_results.zip
-all_results.zip
+*.zip
 
 # Data
 exoTrain.csv

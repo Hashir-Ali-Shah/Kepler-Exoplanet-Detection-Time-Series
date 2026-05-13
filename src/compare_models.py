@@ -6,7 +6,7 @@
 #   3. Class-1 Precision / Recall / F1 vs Threshold (line plots per model)
 #   4. Grouped bar chart — Class-1 metrics at key thresholds
 #   5. Heatmap — full threshold sweep for all models
-#   6. Zips everything + shows download link
+#   6. Zips everything
 # =============================================================================
 
 import os, zipfile
@@ -30,8 +30,8 @@ from sklearn.metrics import (
 # CONFIG — must match train_models.py exactly
 # =============================================================================
 DATA_PATH      = r"d:\ML\Tasks\LSTM\exoTrain.csv"
-RESULTS_DIR    = r"d:\ML\Tasks\LSTM"                        # folder containing the .keras files
-COMPARE_DIR    = r"d:\ML\Tasks\LSTM\comparison_results"     # output folder for all plots
+RESULTS_DIR    = r"d:\ML\Tasks\LSTM\models"                 # folder containing the .keras files
+COMPARE_DIR    = r"d:\ML\Tasks\LSTM\results\images"         # output folder for all plots
 GAUSSIAN_SIGMA = 2
 RANDOM_STATE   = 42
 THRESHOLDS     = np.round(np.linspace(0.1, 0.9, 9), 2)
@@ -231,7 +231,7 @@ for metric_key, metric_label in [("r1", "Recall"), ("p1", "Precision"), ("f1", "
 # =============================================================================
 # STEP 8 — ZIP ALL COMPARISON PLOTS
 # =============================================================================
-ZIP_PATH = r"d:\ML\Tasks\LSTM\comparison_results.zip"
+ZIP_PATH = r"d:\ML\Tasks\LSTM\results\comparison_results.zip"
 with zipfile.ZipFile(ZIP_PATH, "w", zipfile.ZIP_DEFLATED) as zf:
     for fname in os.listdir(COMPARE_DIR):
         fpath = os.path.join(COMPARE_DIR, fname)
